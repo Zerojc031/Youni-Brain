@@ -1,0 +1,16 @@
+<audio></audio>
+
+<block wx:if="{{gameon==1}}">
+  <view class="container" bindtap="tap">
+    <view class="page-body-wrapper">
+      <canvas canvas-id="canvas" class="canvas"></canvas>
+    </view>
+    <text>{{score}}</text>
+  </view>
+</block>
+<block wx:else>
+  
+</block>
+<!-- <view id="id_tap" bindtap="tap" style="width: 710rpx;; height: {{fh}};background-color:white;margin-left:20rpx;">
+  <canvas canvas-id="force" style="width: 100%; height: {{fh}}; background-color: rgba(205, 205, 205, 0.2);"></canvas>
+</view> -->

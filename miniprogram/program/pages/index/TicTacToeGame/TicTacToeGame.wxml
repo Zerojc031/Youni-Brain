@@ -1,0 +1,64 @@
+<!--view button class='block'>
+  <image class="userinfo-avatar" src="{{room_info.img}}" mode="cover"></image>
+  <text class='text'>{{room_info.name}}</text>
+</view>
+<view button class='block'>
+  <image class="userinfo-avatar" src="{{myimg}}" mode="cover"></image>
+  <text class='text'>{{myname}}</text>
+</view-->
+
+<view class="container-game">
+  <view class='text.left'>
+    <text>{{room_info.name}}</text>
+  </view>
+  <image class="userinfo-avatar-left" src="{{room_info.img}}" mode="cover"></image>
+  <image class="pk" src="../../../images/PK2.png" />
+  <image class="userinfo-avatar-right" src="{{myimg}}" mode="cover"></image>
+  <view class='text.right'>
+    <text>{{myname}}</text>
+  </view>
+</view>
+
+<!-- 棋盘 -->
+<view wx:for="{{[0,0,0,1,1,1,2,2,2]}}" ontouchstart="onChessBoardTouchStart" wx:key="abc" wx:for-index="i" wx:for-item="j">
+  <view wx:if="{{turn==myturn&&room_info.should_be==i&&state[i]==0}}" style='width:{{width/3-6}}px;height:{{width/3-6}}px;top:{{j*width/3+offset_.y}}px;left:{{i%3*width/3+offset_.x}}px;position:absolute;border:3px solid #f5f0ac;' />
+  <view wx:if="{{state[i]==1}}" style='background-color: #ff774e;opacity:0.3;width:{{width/3}}px;height:{{width/3}}px;top:{{j*width/3+offset_.y}}px;left:{{i%3*width/3+offset_.x}}px;position:absolute;' />
+  <view wx:if="{{state[i]==2}}" style='background-color: #b8e6f8;opacity:0.4;width:{{width/3}}px;height:{{width/3}}px;top:{{j*width/3+offset_.y}}px;left:{{i%3*width/3+offset_.x}}px;position:absolute;' />
+  <view class="chess-board" style="width:{{width*0.3}}px;height:{{width*0.3}}px;">
+    <view class="row" wx:key="*this" wx:for="{{[1,2,3]}}" wx:for-index="rowIndex" wx:for-item="row">
+      <view class="cell" wx:for="{{[1,2,3]}}" wx:key="*this" />
+    </view>
+  </view>
+</view>
+<!-- 红棋子 -->
+<block wx:for="{{chessBoard}}" wx:for-item="big" wx:key="index">
+  <block wx:for="{{big}}" wx:for-item="chess" wx:key="colIndex">
+    <image src='../../../images/cha.png' wx:if="{{chess.type==1}}" style='width:{{width/10}}px;height:{{width/10}}px;top:{{chess.pos.y}}px;left:{{chess.pos.x}}px;position:absolute;' />
+  </block>
+</block>
+<!-- 蓝棋子 -->
+<block wx:for="{{chessBoard}}" wx:for-item="big" wx:key="index">
+  <block wx:for="{{big}}" wx:for-item="chess" wx:key="colIndex">
+    <image src='../../../images/yuanquan.png' wx:if="{{chess.type==2}}" style='width:{{width/10}}px;height:{{width/10}}px;top:{{chess.pos.y}}px;left:{{chess.pos.x}}px;position:absolute;' />
+  </block>
+</block>
+<!--星星-->
+<image src='../../../images/star.png' wx:if="{{turn==myturn}}" style='width:{{width/15}}px;height:{{width/15}}px;top:{{star.y-8}}px;left:{{star.x-8}}px;position:absolute;' />
+<!-- 提示 -->
+<view class='tip' wx:if="{{tip2==''&&gameover==0}}">💡 {{tip1}}</view>
+<view class='tip' wx:if="{{gameon==1&&gameover==0}}">{{tip2}}</view>
+<view class='tip' wx:if="{{myword!=''}}">{{myword}}</view>
+<view class='tip' wx:if="{{myword==''}}">{{yourword}}</view>
+<view class='tip' wx:if="{{gameover==1}}">{{lasttip}}</view>
+<button bindtap='back_to_index' class='exit'>退出游戏</button>
+<button class='speak' bindtap='speak'>发言</button>
+<button wx:if="{{myturn==1&&gameon==0}}" bindtap='begin' class='exit'>开始游戏</button>
+<button wx:if="{{gameon==1&&turn==myturn}}" bindtap='finish' class='exit'>确定</button>
+
+<!--input wx:if="{{speak==true}}" class="section" bindinput="bindKeyInput" maxlength="20" />
+<button  wx:if="{{speak==true}}" bindtap='send' class='exit.check'>确定</button-->
+
+<view wx:if="{{speak==true}}" class="section">
+  <input class='input-speak' bindinput="bindKeyInput" />
+  <button bindtap='send' class='button-send'>发送</button>
+</view>

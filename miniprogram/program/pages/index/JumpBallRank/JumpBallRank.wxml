@@ -1,0 +1,13 @@
+<button bindtap='toIndex' class='pre_page'>返回首页</button>
+<button bindtap='restart' class='pre_page.next_page'>重新开始</button>
+<button class='title'>排行榜</button>
+<button bindtap='previous' class='pre_page'>上一页</button>
+<button bindtap='next' class='pre_page.next_page'>下一页</button>
+<view wx:for="{{rank}}">
+<view button class='block' wx:if="{{item.bestScore>0}}">
+  <text class='ranknum'>{{index+page*20-20+1}}</text>
+  <image class="userinfo-avatar" src="{{item.avatarUrl}}" mode="cover"></image>
+  <text class='text'>{{item.nickName}}</text>
+  <text class='score'>{{item.bestScore}}</text>
+</view>
+</view>

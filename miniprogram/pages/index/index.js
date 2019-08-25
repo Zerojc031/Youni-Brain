@@ -75,15 +75,15 @@ Page({
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-
         wx.showLoading({
           title: '上传中',
         })
-
+        
+        // tempFilePaths可以作为img标签的src属性显示图片
         const filePath = res.tempFilePaths[0]
         
-        // 上传图片
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        // 上传图片, filePath.match(/\.[^.]+?$/)[0] 是给文件名加后缀
+        const cloudPath = 'test/my-image' + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,

@@ -1,0 +1,51 @@
+<!--pages/index/TicTacToeGame2/TicTacToeGame2.wxml-->
+<view class="container-game">
+  <view class='text.left'><text>{{name}}</text></view>
+  <image class="userinfo-avatar-left" src="{{img}}" mode="cover"></image>
+  <image class="pk" src="../../../images/PK2.png" />
+  <image class="userinfo-avatar-right" src="../../../images/panda.png" mode="cover"></image>
+  <view class='text.right'><text>Robot</text></view>
+</view>
+
+ <!-- 棋盘 -->
+<view wx:for="{{[0,0,0,1,1,1,2,2,2]}}" ontouchstart="onChessBoardTouchStart" wx:key="abc" wx:for-index="i" wx:for-item="j">
+  <view wx:if="{{should_be==i&&state[i]==0}}" style='width:{{width/3-6}}px;height:{{width/3-6}}px;top:{{j*width/3+offset_.y}}px;left:{{i%3*width/3+offset_.x}}px;position:absolute;border:3px solid #f5f0ac;'/>
+  <view wx:if="{{state[i]==1}}" style='background-color: #ff774e;opacity:0.3;width:{{width/3}}px;height:{{width/3}}px;top:{{j*width/3+offset_.y}}px;left:{{i%3*width/3+offset_.x}}px;position:absolute;'/>
+  <view wx:if="{{state[i]==2}}" style='background-color: #b8e6f8;opacity:0.4;width:{{width/3}}px;height:{{width/3}}px;top:{{j*width/3+offset_.y}}px;left:{{i%3*width/3+offset_.x}}px;position:absolute;'/>
+  <view class="chess-board" 
+        style="width:{{width*0.3}}px;height:{{width*0.3}}px;"
+  >
+    <view class="row" 
+          wx:key="*this"
+          wx:for="{{[1,2,3]}}"
+          wx:for-index="rowIndex"
+          wx:for-item="row">
+      <view class="cell"
+            wx:for="{{[1,2,3]}}" wx:key="*this"/>
+    </view>
+  </view>
+</view>
+ <!-- 红棋子 -->
+ <block wx:for="{{chessBoard}}"  wx:for-item="big" wx:key="index">
+ <block wx:for="{{big}}"  wx:for-item="chess" wx:key="colIndex">
+ <image src='../../../images/cha.png' wx:if="{{chess.type==1}}"
+  style='width:{{width/10}}px;height:{{width/10}}px;top:{{chess.pos.y}}px;left:{{chess.pos.x}}px;position:absolute;'/>
+</block>
+</block>
+ <!-- 蓝棋子 -->
+ <block wx:for="{{chessBoard}}"  wx:for-item="big" wx:key="index">
+ <block wx:for="{{big}}"  wx:for-item="chess" wx:key="colIndex">
+ <image src='../../../images/yuanquan.png' wx:if="{{chess.type==2}}"
+  style='width:{{width/10}}px;height:{{width/10}}px;top:{{chess.pos.y}}px;left:{{chess.pos.x}}px;position:absolute;'/>
+</block>
+</block>
+<!--星星-->
+<image src='../../../images/star.png' 
+  style='width:{{width/15}}px;height:{{width/15}}px;top:{{star.y-8}}px;left:{{star.x-8}}px;position:absolute;'/>
+ <!-- 提示 -->
+ <view class='tip'>💡 {{tip}}</view>
+<button bindtap='back_to_index' class='exit' style='width:120rpx;'>退出</button>
+<button wx:if="{{gameon==1}}" class='exit'  bindtap='restart'>重新开始</button>
+<button wx:if="{{gameon==0}}" class='exit'  bindtap='start'  >开始游戏</button>
+<button wx:if="{{gameon==1&&mystep}}" bindtap='finish' class='exit'>确定</button>
+<!--button wx:if="{{gameon==0}}" bindtap='torank' class='exit'>排行榜</button-->

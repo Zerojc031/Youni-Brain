@@ -21,118 +21,126 @@ Page({
   },
 
   onAdd: function () {
-    // const db = wx.cloud.database()
-    // db.collection('counters').add({
-    //   data: {
-    //     count: 1
-    //   },
-    //   success: res => {
-    //     // 在返回结果中会包含新创建的记录的 _id
-    //     this.setData({
-    //       counterId: res._id,
-    //       count: 1
-    //     })
-    //     wx.showToast({
-    //       title: '新增记录成功',
-    //     })
-    //     console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-    //   },
-    //   fail: err => {
-    //     wx.showToast({
-    //       icon: 'none',
-    //       title: '新增记录失败'
-    //     })
-    //     console.error('[数据库] [新增记录] 失败：', err)
-    //   }
-    // })
+    const db = wx.cloud.database()
+    db.collection('counters').add({
+      data: {
+        count: 1
+      },
+      success: res => {
+        // 在返回结果中会包含新创建的记录的 _id
+        this.setData({
+          counterId: res._id,
+          count: 1
+        })
+        wx.showToast({
+          title: '新增记录成功',
+        })
+        console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '新增记录失败'
+        })
+        console.error('[数据库] [新增记录] 失败：', err)
+      }
+    })
   },
 
   onQuery: function() {
-    // const db = wx.cloud.database()
-    // // 查询当前用户所有的 counters
-    // db.collection('counters').where({
-    //   _openid: this.data.openid
-    // }).get({
-    //   success: res => {
-    //     this.setData({
-    //       queryResult: JSON.stringify(res.data, null, 2)
-    //     })
-    //     console.log('[数据库] [查询记录] 成功: ', res)
-    //   },
-    //   fail: err => {
-    //     wx.showToast({
-    //       icon: 'none',
-    //       title: '查询记录失败'
-    //     })
-    //     console.error('[数据库] [查询记录] 失败：', err)
-    //   }
-    // })
+    const db = wx.cloud.database()
+    // 查询当前用户所有的 counters
+    db.collection('counters').where({
+      _openid: this.data.openid
+    }).get({
+      success: res => {
+        this.setData({
+          /**
+           * JSON.stringify(value[, replacer [, space]])
+           * value: 将要序列化成 一个JSON 字符串的值
+           * replacer: 可选。用于转换结果的函数或数组。
+           * 如果 replacer 为函数，则 JSON.stringify 将调用该函数，并传入每个成员的键和值。使用返回值而不是原始值。如果此函数返回 undefined，则排除成员。根对象的键是一个空字符串：""。
+           * 如果 replacer 是一个数组，则仅转换该数组中具有键值的成员。成员的转换顺序与键在数组中的顺序一样。
+           * space: 可选，文本添加缩进、空格和换行符，如果 space 是一个数字，则返回值文本在每个级别缩进指定数目的空格，如果 space 大于 10，则文本缩进 10 个空格。space 也可以使用非数字，如：\t。
+           */
+          queryResult: JSON.stringify(res.data, null, 2)
+        })
+        console.log('[数据库] [查询记录] 成功: ', res)
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '查询记录失败'
+        })
+        console.error('[数据库] [查询记录] 失败：', err)
+      }
+    })
   },
 
   onCounterInc: function() {
-    // const db = wx.cloud.database()
-    // const newCount = this.data.count + 1
-    // db.collection('counters').doc(this.data.counterId).update({
-    //   data: {
-    //     count: newCount
-    //   },
-    //   success: res => {
-    //     this.setData({
-    //       count: newCount
-    //     })
-    //   },
-    //   fail: err => {
-    //     icon: 'none',
-    //     console.error('[数据库] [更新记录] 失败：', err)
-    //   }
-    // })
+    const db = wx.cloud.database()
+    const newCount = this.data.count + 1
+    db.collection('counters').doc(this.data.counterId).update({
+      data: {
+        count: newCount
+      },
+      success: res => {
+        this.setData({
+          count: newCount
+        })
+      },
+      fail: err => {
+        icon: 'none',
+        console.error('[数据库] [更新记录] 失败：', err)
+      }
+    })
   },
 
   onCounterDec: function() {
-    // const db = wx.cloud.database()
-    // const newCount = this.data.count - 1
-    // db.collection('counters').doc(this.data.counterId).update({
-    //   data: {
-    //     count: newCount
-    //   },
-    //   success: res => {
-    //     this.setData({
-    //       count: newCount
-    //     })
-    //   },
-    //   fail: err => {
-    //     icon: 'none',
-    //     console.error('[数据库] [更新记录] 失败：', err)
-    //   }
-    // })
+    const db = wx.cloud.database()
+    const newCount = this.data.count - 1
+    db.collection('counters').doc(this.data.counterId).update({
+      data: {
+        count: newCount
+      },
+      success: res => {
+        this.setData({
+          count: newCount
+        })
+      },
+      fail: err => {
+        icon: 'none',
+        console.error('[数据库] [更新记录] 失败：', err)
+      }
+    })
   },
 
   onRemove: function() {
-    // if (this.data.counterId) {
-    //   const db = wx.cloud.database()
-    //   db.collection('counters').doc(this.data.counterId).remove({
-    //     success: res => {
-    //       wx.showToast({
-    //         title: '删除成功',
-    //       })
-    //       this.setData({
-    //         counterId: '',
-    //         count: null,
-    //       })
-    //     },
-    //     fail: err => {
-    //       wx.showToast({
-    //         icon: 'none',
-    //         title: '删除失败',
-    //       })
-    //       console.error('[数据库] [删除记录] 失败：', err)
-    //     }
-    //   })
-    // } else {
-    //   wx.showToast({
-    //     title: '无记录可删，请见创建一个记录',
-    //   })
-    // }
+    if (this.data.counterId) {
+      const db = wx.cloud.database()
+      db.collection('counters').doc(this.data.counterId).remove({
+        success: res => {
+          wx.showToast({
+            title: '删除成功',
+          })
+          this.setData({
+            counterId: '',
+            count: null,
+          })
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '删除失败',
+          })
+          console.error('[数据库] [删除记录] 失败：', err)
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '无记录可删, 请创建一个记录',
+      })
+    }
   },
 
   nextStep: function () {
@@ -142,6 +150,7 @@ Page({
         name: 'login',
         data: {},
         success: res => {
+          console.log(res)
           app.globalData.openid = res.result.openid
           this.setData({
             step: 2,

@@ -1,0 +1,39 @@
+.itsContainer{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+}
+.button-getUserInfo{
+  height: 70rpx;
+  line-height: 30rpx;
+  font-size: 30rpx;
+}
+.button-interact{
+  width: 400rpx;
+  margin:25rpx 125rpx;
+  background-color: gold;
+  text-align: center;
+}
+.text{
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  font-size: 40rpx;
+}
+.thnx{
+  font-size:30rpx;
+  color: grey;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+}
+.getUserInfo{
+  /* float: left; */
+  background: none;
+  font-size: 10px;
+  color: gray;
+  padding: 12rpx 12rpx 0 0;
+  margin: 0 0 10rpx 0;
+}

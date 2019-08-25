@@ -1,0 +1,23 @@
+<view class="userinfo">
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  <block wx:if="{{hasUserInfo}}">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover">
+      </image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </block>
+</view>
+
+<swiper indicator-dots="true" indicator-color="rgba(0,0,0,0.5)" indicator-active-color="#000000" autoplay="true" current="0" interval="10000" duration="300" circular="true" display-multiple-items="1" easing-function="default" class='swiper-course'>
+  <!-- skip-hidden-item-layout="true" 是否跳过未显示的滑块布局，设为 true 可优化复杂情况下的滑动性能，但会丢失隐藏状态滑块的布局信息 -->
+  <!-- easing-function="easeInCubic" 指定 swiper 切换缓动动画类型 -->
+  <!-- vertical="false" -->
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class='image-swiperItem' />
+      <view class='text'>{{tip[index]}}</view>
+    </swiper-item>
+  </block>
+</swiper>
+<button wx:if="{{accessable}}" open-type='share' class='button-interact'>双人对战</button>
+<button wx:if="{{!accessable}}" bindtap='reject' class='button-interact'>双人对战</button>
+<button bindtap='HMI' class='button-interact'>人机对战</button>

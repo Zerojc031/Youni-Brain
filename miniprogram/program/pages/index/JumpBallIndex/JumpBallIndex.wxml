@@ -1,0 +1,16 @@
+<view class="itsContainer">
+  <block wx:if="{{!hasUserInfo && canIUse}}">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+     <text>请点击授权您的用户信息\n用户信息仅用于排行榜的展示 </text>
+     </button>
+  </block>
+  <button bindtap="toJumpBall" class="button-interact">开始游戏</button>
+  <button bindtap='toJumpBallRank' class='button-interact'>排行榜</button>
+  <button bindtap='toIndex' class='button-interact'>返回首页</button>
+  <view class="text">
+    <text>💡游戏说明\n点击屏幕可让蓝球跳跃，点击位置越靠右跳跃高度越高，按时间计分，若蓝球碰到红色物体则游戏结束。</text>
+  </view>
+  <view class="thnk">
+    <text>\n\n该游戏处于测试阶段，游戏记录可能丢失\n鸣谢：ccz181078</text>
+  </view>
+</view>

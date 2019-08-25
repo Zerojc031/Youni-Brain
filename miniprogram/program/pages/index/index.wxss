@@ -1,0 +1,59 @@
+/**index.wxss**/
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50rpx 0rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.image-item {
+  width: 500rpx;
+  height: 500rpx;
+  padding: 0 125rpx;
+}
+
+.button-getUserInfo {
+  width: 500rpx;
+  height: 150rpx;
+  margin: 50rpx 125rpx;
+  background-color: gold;
+  text-align: center;
+  padding: 25rpx;
+}
+
+.button-toGameIndex {
+  width: 500rpx;
+  background-color: gold;
+}
+
+.text-intro {
+  width: 550rpx;
+  height: 400rpx;
+  padding: 50rpx 100rpx;
+  text-align: center;
+}
+
+.button-like {
+  width: 500rpx;
+}
+
+.swiper-index {
+  width: 750rpx;
+  height: 700rpx;
+}

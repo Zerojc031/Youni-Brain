@@ -1,0 +1,17 @@
+<!--pages/page1/page1.wxml-->
+<button class='title'>排行榜</button>
+<!--button bindtap='previous' class='pre_page'>上一页</button>
+<button bindtap='next' class='pre_page.next_page'>下一页</button-->
+<view button class='block'>
+  <text class='ranknum'>∞</text>
+  <image class="userinfo-avatar" src="../../../images/panda.png" mode="cover"></image>
+  <text class='text'>robot:   这是你们打败我的次数</text>
+</view>
+<view wx:for="{{rank}}">
+<view button class='block' wx:if="{{item.win>0}}">
+  <text class='ranknum'>{{index+page*20-20+1}}</text>
+  <image class="userinfo-avatar" src="{{item.img}}" mode="cover"></image>
+  <text class='text'>{{item.name}}</text>
+  <text class='score'>{{item.win}}</text>
+</view>
+</view>
