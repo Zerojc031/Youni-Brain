@@ -150,7 +150,7 @@ Page({
           })
         },
         fail: function(res) {
-          console.log('查询数据库control失败',res)
+          console.log('查询数据库control失败', res)
         },
         complete: function(res) {
           console.log('查询数据库control完成', res)
@@ -184,7 +184,7 @@ Page({
     }, 2000)
     return {
       title: that.data.userInfo.nickName + '邀请你加入游戏',
-      path: '/pages/index/TicTacToeIndex/TicTacToeIndex?myroom=' + room2 + '&yourroom=' + room1 + '&invited=1',
+      path: '../TicTacToeIndex/TicTacToeIndex?myroom=' + room2 + '&yourroom=' + room1 + '&invited=1',
       success: (res) => {
         console.log('successfully shared');
       }
