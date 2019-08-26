@@ -2,7 +2,9 @@
 <view class="userinfo">
   <block wx:if="{{!hasUserInfo && canIUse}}">
     <image class="userinfo-avatar" src="../../images/user-unlogin.png" mode="cover"></image>
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button open-type="getUserInfo" class="button-getUserInfo" bindgetuserinfo="getUserInfo">
+      <text> 获取头像昵称 </text>
+    </button>
   </block>
   <block wx:else>
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>

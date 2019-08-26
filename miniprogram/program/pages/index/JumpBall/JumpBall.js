@@ -51,8 +51,9 @@ Page({
     if (app.globalData.openid) {
       this.data.openid = app.globalData.openid
       if (this.data.bool == 0 && this.data.openid) {
-        if (options.id > 0) {
-          this.data.bestScore=options.id
+        if (options.bestScore > 0) {
+          this.data.bestScore = options.bestScore
+          this.data.id=options.id
           this.data.bool=1
         } else {
           this.data.bool = -1;
@@ -202,7 +203,7 @@ Page({
           if (res.confirm) {
             console.log("点击重新开始");
             wx.reLaunch({
-              url: '../JumpBall/JumpBall?id=' + that.data.bestScore,
+              url: '../JumpBall/JumpBall?bestScore=' + that.data.bestScore+'&id='+that.data.id,
               success: function(res) {},
               fail: function(res) {},
               complete: function(res) {},

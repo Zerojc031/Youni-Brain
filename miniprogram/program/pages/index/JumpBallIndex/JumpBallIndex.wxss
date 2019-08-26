@@ -8,22 +8,23 @@
   box-sizing: border-box;
 }
 .button-getUserInfo{
-  height: 70rpx;
-  line-height: 30rpx;
   font-size: 30rpx;
+  border-radius: 10rpx;
 }
 .button-interact{
   width: 400rpx;
   margin:25rpx 125rpx;
   background-color: gold;
   text-align: center;
+  font-size: 45rpx;
+  border-radius: 15rpx;
 }
-.text{
+.text-intro{
   margin-left: 60rpx;
   margin-right: 60rpx;
   font-size: 40rpx;
 }
-.thnx{
+.text-appreciate{
   font-size:30rpx;
   color: grey;
   margin-left: 60rpx;

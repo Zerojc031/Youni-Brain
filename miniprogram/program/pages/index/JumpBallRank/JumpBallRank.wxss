@@ -62,3 +62,6 @@
 .pre_page.next_page{
   float: right;
 }
+.pageChange{
+  color: white;
+}

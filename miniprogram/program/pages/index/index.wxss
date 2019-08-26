@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50rpx 0rpx;
+  padding: 50rpx 0;
 }
 
 .userinfo-avatar {
@@ -18,6 +18,11 @@
   color: #aaa;
 }
 
+.button-getUserInfo{
+  font-size: 30rpx;
+  border-radius: 10rpx;
+}
+
 .usermotto {
   margin-top: 200px;
 }
@@ -28,29 +33,25 @@
   padding: 0 125rpx;
 }
 
-.button-getUserInfo {
-  width: 500rpx;
-  height: 150rpx;
-  margin: 50rpx 125rpx;
-  background-color: gold;
-  text-align: center;
-  padding: 25rpx;
-}
-
 .button-toGameIndex {
+  font-size: 45rpx;
   width: 500rpx;
   background-color: gold;
+  border-radius: 15rpx;
 }
 
 .text-intro {
   width: 550rpx;
   height: 400rpx;
   padding: 50rpx 100rpx;
+  font-size: 30rpx;
   text-align: center;
 }
 
 .button-like {
   width: 500rpx;
+  font-size: 45rpx;
+  border-radius: 15rpx;
 }
 
 .swiper-index {
