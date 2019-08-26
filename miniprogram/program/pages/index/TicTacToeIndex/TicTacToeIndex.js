@@ -56,18 +56,6 @@ Page({
         }
       })
     }
-    db.collection('control').doc('database').get({
-      success: function(res) {
-        console.log('检查数据库', userInfo)
-        if (this.data.userInfo) this.setData({
-          accessable: res.data.accessable
-        })
-        console.log('success')
-      },
-      fail: function(res) {
-        console.log('fail')
-      }
-    })
     setTimeout(this.generate_id, 500)
     var invited = options.invited || 0;
     if (invited == 1) {
@@ -148,7 +136,32 @@ Page({
         }
       })
     }
+  },
 
+  onReady: function() {
+    var that = this
+    if (app.globalData.userInfo) {
+      console.log('进行查询数据库操作')
+      db.collection('control').doc('database').get({
+        success: function(res) {
+          console.log('查询数据库control成功', res)
+          if (res.data.accessable && !that.data.accessable) that.setData({
+            accessable: res.data.accessable
+          })
+        },
+        fail: function(res) {
+          console.log('查询数据库control失败',res)
+        },
+        complete: function(res) {
+          console.log('查询数据库control完成', res)
+          if (res.data.accessable && !that.data.accessable) that.setData({
+            accessable: res.data.accessable
+          })
+        }
+      })
+    } else {
+      console.log('无授权数据')
+    }
   },
 
   getUserInfo: function(e) {
@@ -307,7 +320,7 @@ Page({
     })
     var that = this;
     setTimeout(function() {
-      console.log(flag);
+      console.log('flag:' + flag);
       if (flag == 2) {
         var wintemp = 0;
         var peacetemp = 0;
