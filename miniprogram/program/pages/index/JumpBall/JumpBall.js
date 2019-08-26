@@ -54,6 +54,7 @@ Page({
         if (options.bestScore > 0) {
           this.data.bestScore = options.bestScore
           this.data.id = options.id
+          this.data.times=options.times
           this.data.bool = 1
         } else {
           this.data.bool = -1;
@@ -203,7 +204,7 @@ Page({
           if (res.confirm) {
             console.log("点击重新开始");
             wx.redirectTo({
-              url: '../JumpBall/JumpBall?bestScore=' + that.data.bestScore + '&id=' + that.data.id,
+              url: '../JumpBall/JumpBall?bestScore=' + that.data.bestScore + '&id=' + that.data.id+'&times='+that.data.times,
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
