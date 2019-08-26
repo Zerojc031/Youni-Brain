@@ -110,7 +110,7 @@ Page({
   },
 
   toJumpBall: function(e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: "../JumpBall/JumpBall",
     })
   },

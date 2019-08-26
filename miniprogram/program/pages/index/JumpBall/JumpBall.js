@@ -44,7 +44,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     console.log('传递参数', options)
     var that = this
     if (app.globalData.userInfo) this.data.userInfo = app.globalData.userInfo
@@ -53,8 +53,8 @@ Page({
       if (this.data.bool == 0 && this.data.openid) {
         if (options.bestScore > 0) {
           this.data.bestScore = options.bestScore
-          this.data.id=options.id
-          this.data.bool=1
+          this.data.id = options.id
+          this.data.bool = 1
         } else {
           this.data.bool = -1;
           //最高分数据本地初始化
@@ -62,7 +62,7 @@ Page({
             _openid: that.data.openid,
             key: 1
           }).get({
-            success: function(res) {
+            success: function (res) {
               if (res.data[0].bestScore >= 0) {
                 that.data.bestScore = res.data[0].bestScore;
                 that.data.bool = 1;
@@ -75,7 +75,7 @@ Page({
                 //这个 else 可能不会执行到
               }
             },
-            fail: function(res) {
+            fail: function (res) {
               that.data.bestScore = 0
               bool = -1
             }
@@ -88,7 +88,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
     //获取当前时间戳（单位：秒）
     this.data.stamp = Date.parse(new Date()) / 1000;
     //角速度随机分配
@@ -116,7 +116,7 @@ Page({
     this.interval = setInterval(this.draw, 15)
   },
 
-  draw: function() {
+  draw: function () {
     var that = this;
 
     // 返回两小球距离
@@ -202,16 +202,23 @@ Page({
         success(res) {
           if (res.confirm) {
             console.log("点击重新开始");
-            wx.reLaunch({
-              url: '../JumpBall/JumpBall?bestScore=' + that.data.bestScore+'&id='+that.data.id,
-              success: function(res) {},
-              fail: function(res) {},
-              complete: function(res) {},
+            wx.redirectTo({
+              url: '../JumpBall/JumpBall?bestScore=' + that.data.bestScore + '&id=' + that.data.id,
+              success: function (res) { },
+              fail: function (res) { },
+              complete: function (res) { },
             })
           } else {
-            wx.redirectTo({
-              url: '../JumpBallIndex/JumpBallIndex',
-            })
+            var page = getCurrentPages()
+            if (page > 0) {
+              wx.navigateBack({
+                delta: 1
+              })
+            } else {
+              wx.redirectTo({
+                url: '../JumpBallIndex/JumpBallIndex',
+              })
+            }
           }
         },
         fail(res) {
@@ -223,7 +230,7 @@ Page({
       })
     }
   },
-  upLoad: function() {
+  upLoad: function () {
     var score = this.data.score,
       timestamp = Date.parse(new Date()) / 1000; //获取当前时间戳（单位：秒）
     if (this.data.score >= this.data.bestScore) this.data.bestScore = this.data.score;
@@ -257,7 +264,7 @@ Page({
       })
     }
   },
-  time: function() {
+  time: function () {
     this.data.t++;
     var tempScore = Math.floor((this.data.t) / 100);
     this.setData({
@@ -265,7 +272,7 @@ Page({
     })
     if (this.data.t == 3000 && this.data.t == 6000 && this.data.t == 9000) this.data.w[this.data.index] += 0.1;
   },
-  tap: function(e) {
+  tap: function (e) {
     console.log(e);
     if (2 * this.data.h < this.data.ballR && this.data.v <= 0) {
       this.data.h = 0;
@@ -276,17 +283,17 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
     wx.navigateBack({
       delta: 1,
-      fail: function() {
+      fail: function () {
         wx.reLaunch({
           url: '../index',
         })
@@ -297,28 +304,28 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
     clearInterval(this.interval);
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     var titletext, d = this.data;
     if (this.data.bestScore > 0) titletext = "我的最高得分是" + this.data.bestScore + "分，快来挑战我吧！";
     else titletext = "跳跳球真难玩，你能得几分呢？";
