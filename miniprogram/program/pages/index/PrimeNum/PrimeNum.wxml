@@ -2,24 +2,24 @@
 <button wx:if="{{gameon==0&&firsttime==1}}" bindtap='gameon' class='begin.first'>开始游戏</button>
 <button wx:if="{{gameon==0&&firsttime==0}}" bindtap="gameon" class='begin'>再来一次</button>
 <button wx:if="{{gameon==0&&firsttime==0}}" class='begin.result'>
-<view>得分：{{score}}</view>
-<view>历史最高分：{{bestscore}}</view>
+  <view>得分：{{score}}</view>
+  <view>历史最高分：{{bestscore}}</view>
 </button>
 <button wx:if="{{gameon==0&&firsttime==1}}" bindtap='toRank' class='begin.first'>排行榜</button>
 <button wx:if="{{gameon==0&&firsttime==0}}" bindtap='toRank' class='begin.rank'>排行榜</button>
 <!--游戏界面-->
-<button wx:if="{{gameon==1}}" class='number'  bindtap="set_ran">{{list_num[index]}}
-<view class='pass'>轻触跳过</view> 
+<button wx:if="{{gameon==1}}" class='number' bindtap="set_ran">{{list_num[index]}}
+  <view class='pass'>轻触跳过</view>
 </button>
 
 <button wx:if="{{list_ans[index]==1&&gameon==1}}" bindtap="yes" class="button.right">✔</button>
-<button wx:if="{{list_ans[index]==0&&gameon==1}}" bindtap="no"class="button.right">✔</button>
+<button wx:if="{{list_ans[index]==0&&gameon==1}}" bindtap="no" class="button.right">✔</button>
 <button wx:if="{{list_ans[index]==1&&gameon==1}}" bindtap="no" class="button.wrong">❌</button>
 <button wx:if="{{list_ans[index]==0&&gameon==1}}" bindtap="yes" class="button.wrong">❌</button>
 
 <button wx:if="{{gameon==1}}" class='text'>
-<view>{{react}}</view>
-<view>得分：{{score}}</view>
-<view>倒计时：{{second}}s</view>
+  <view>{{react}}</view>
+  <view>得分：{{score}}</view>
+  <view>倒计时：{{second}}s</view>
 </button>
 <button wx:if="{{gameon==1}}" class='text.back' bindtap='goback'>退出</button>

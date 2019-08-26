@@ -1,12 +1,12 @@
 /* pages/PrimeNum/PrimeNum.wxss */
 .number{
   color:rgb(63, 160, 184);
-  font-size: 50px;
+  font-size: 100rpx;
   text-align: center;
   background: none;
 }
 .begin{
-  font-size: 20px;
+  font-size: 40rpx;
   color:rgb(85, 94, 88);
   background-color:gold;
   text-align: center;
@@ -14,8 +14,8 @@
   width:60%;
   left:20%;
   top:8cm;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+  border-radius: 16rpx;
+  box-shadow: 0 16rpx 32rpx 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
 }
 .begin.first{
   top:5cm;
@@ -27,12 +27,12 @@
   top:5.5cm;
 }
 .pass{
-  font-size: 13px;
+  font-size: 26rpx;
   color:rgb(145, 143, 168);
 }
 .text{
   color:rgb(145, 143, 168);
-  font-size: 13px;
+  font-size: 26rpx;
   text-align: center;
   border: none;
   float: left;
@@ -42,7 +42,7 @@
   top:3cm;
 }
 .text.back{
-  top:6cm;
+  top:460rpx;
   left:-25%;
 }
 .button{
@@ -55,9 +55,9 @@
   font-weight:bolder;
   border: none;
   float:left;
-  padding: 10px 10px;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 20rpx 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 16rpx 32rpx 0 rgba(0,0,0,0.2), 0 12rpx 40rpx 0 rgba(0,0,0,0.19);
 }
 .button.wrong{
   position: relative;

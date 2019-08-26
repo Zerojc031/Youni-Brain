@@ -7,6 +7,11 @@
   padding: 50rpx 0rpx;
 }
 
+.button-getUserInfo {
+  font-size: 30rpx;
+  border-radius: 10rpx;
+}
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -16,27 +21,35 @@
 
 .userinfo-nickname {
   color: #aaa;
+  font-size: 50rpx;
 }
 
 .usermotto {
   margin-top: 200px;
 }
 
-.text {
-  font-size: 15px;
+.text-tip {
+  font-size: 30rpx;
   color: rgb(104, 98, 98);
-  padding: 10px 15px;
+  padding: 20rpx 30rpx;
   text-align: center;
 }
 
-.swiper-course{
-  width:750rpx;height:720rpx;
+.swiper-course {
+  width: 750rpx;
+  height: 720rpx;
 }
 
-.image-swiperItem{
-  width:500rpx;height:550rpx;padding:0 125rpx;
+.image-swiperItem {
+  width: 500rpx;
+  height: 550rpx;
+  padding: 0 125rpx;
 }
 
-.button-interact{
-  width:500rpx;background-color:gold;margin:35rpx 125rpx;
+.button-interact {
+  font-size: 45rpx;
+  width: 500rpx;
+  background-color: gold;
+  margin: 35rpx 125rpx;
+  border-radius: 15rpx;
 }

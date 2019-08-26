@@ -1,9 +1,9 @@
 <view class="userinfo">
-  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-getUserInfo"> 获取头像昵称 </button>
   <block wx:if="{{hasUserInfo}}">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover">
-      </image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </block>
 </view>
 
@@ -14,7 +14,7 @@
   <block wx:for="{{imgUrls}}">
     <swiper-item>
       <image src="{{item}}" class='image-swiperItem' />
-      <view class='text'>{{tip[index]}}</view>
+      <view class='text-tip'>{{tip[index]}}</view>
     </swiper-item>
   </block>
 </swiper>

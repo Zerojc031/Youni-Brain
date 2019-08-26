@@ -16,6 +16,7 @@
 
 .userinfo-nickname {
   color: #aaa;
+  font-size: 50rpx;
 }
 
 .button-getUserInfo{
