@@ -30,6 +30,7 @@ Page({
   },
   //事件处理函数
   onLoad: function(options) {
+    console.log('options：', options)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -57,14 +58,15 @@ Page({
       })
     }
     setTimeout(this.generate_id, 500)
-    var invited = options.invited || 0;
-    if (invited == 1) {
-      if (this.data.userInfo) wx.showModal({
-        title: '请授权获取用户信息',
-        content: '仅获取您的头像昵称，用于游戏界面的展示，可以先阅读完规则再授权，授权后立即进入房间',
-        confirmText: '确定',
-        showCancel: false
-      })
+    if (options.invited == 1) {
+      if (!this.data.userInfo) {
+        wx.showModal({
+          title: '请授权获取用户信息',
+          content: '仅获取您的头像昵称，用于游戏界面的展示，可以先阅读完规则再授权，授权后立即进入房间',
+          confirmText: '确定',
+          showCancel: false
+        })
+      }
       var that = this;
       var myroom = options.myroom;
       var yourroom = options.yourroom;
@@ -102,7 +104,7 @@ Page({
           let info = res.data;
           if (info.name == that.data.userInfo.nickName) {
             wx.redirectTo({
-              url: '../TicTacToeGame/TicTacToeGame?myroom=' + yourroom + '&yourroom=' + myroom + '&myturn=1&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
+              url: '../TicTacToeGame/TicTacToeGame?myroom=' + yourroom + '&yourroom=' + myroom + '&myturn=' + '1' + '&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
             })
           } else if (info.name != that.data.userInfo.nickName) {
             db.collection('tic_tac_toe_room').doc(myroom).get({
@@ -110,7 +112,7 @@ Page({
                 let info1 = res.data;
                 if (info1.name == that.data.userInfo.nickName) {
                   wx.redirectTo({
-                    url: '../TicTacToeGame/TicTacToeGame?myroom=' + myroom + '&yourroom=' + yourroom + '&myturn=2&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
+                    url: '../TicTacToeGame/TicTacToeGame?myroom=' + myroom + '&yourroom=' + yourroom + '&myturn=' + '2' + '&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
                   })
                 } else {
                   wx.showModal({
@@ -125,7 +127,7 @@ Page({
                 var i = setInterval(function() {
                   if (that.data.userInfo.nickName && that.data.user_id) {
                     wx.redirectTo({
-                      url: '../TicTacToeGame/TicTacToeGame?myroom=' + myroom + '&yourroom=' + yourroom + '&myturn=2&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
+                      url: '../TicTacToeGame/TicTacToeGame?myroom=' + myroom + '&yourroom=' + yourroom + '&myturn=' + '2' + '&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
                     })
                     clearInterval(i);
                   }
@@ -145,18 +147,22 @@ Page({
       db.collection('control').doc('database').get({
         success: function(res) {
           console.log('查询数据库control成功', res)
-          if (res.data.accessable && !that.data.accessable) that.setData({
-            accessable: res.data.accessable
-          })
+          if (res.data.accessable && !that.data.accessable) {
+            that.setData({
+              accessable: res.data.accessable
+            })
+          }
         },
         fail: function(res) {
           console.log('查询数据库control失败', res)
         },
         complete: function(res) {
           console.log('查询数据库control完成', res)
-          if (res.data.accessable && !that.data.accessable) that.setData({
-            accessable: res.data.accessable
-          })
+          if (res.data.accessable && !that.data.accessable) {
+            that.setData({
+              accessable: res.data.accessable
+            })
+          }
         }
       })
     } else {
@@ -178,13 +184,14 @@ Page({
     var room1 = (Math.random() * 10000000).toString(16).substr(0, 4) + '-' + (new Date()).getTime() + '-' + Math.random().toString().substr(2, 5);
     var room2 = (Math.random() * 10000000).toString(16).substr(0, 4) + '-' + (new Date()).getTime() + '-' + Math.random().toString().substr(2, 5);
     setTimeout(function() {
+      console.log('页面跳转传参：', room1, room2, that.data.user_id)
       wx.redirectTo({
-        url: '../TicTacToeGame/TicTacToeGame?myroom=' + room1 + '&yourroom=' + room2 + '&myturn=1&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
+        url: '../TicTacToeGame/TicTacToeGame?myroom=' + room1 + '&yourroom=' + room2 + '&myturn=' + '1' + '&nickName=' + that.data.userInfo.nickName + '&img=' + that.data.userInfo.avatarUrl + '&user_id=' + that.data.user_id,
       })
     }, 2000)
     return {
       title: that.data.userInfo.nickName + '邀请你加入游戏',
-      path: '../TicTacToeIndex/TicTacToeIndex?myroom=' + room2 + '&yourroom=' + room1 + '&invited=1',
+      path: '../TicTacToeIndex/TicTacToeIndex?myroom=' + room2 + '&yourroom=' + room1 + '&invited=' + '1',
       success: (res) => {
         console.log('successfully shared');
       }
@@ -378,7 +385,7 @@ Page({
   reject: function() {
     wx.showModal({
       title: '暂停开放',
-      content: '数据库访问已达上限，今日内停止开放',
+      content: '数据库访问已达上限，明天再来玩吧',
       showCancel: false,
       confirmText: '确定'
     })
