@@ -28,6 +28,7 @@ Page({
       '💡胜利：一方占领的井有三个连成一条直线时则获得胜利。'
     ]
   },
+  
   //事件处理函数
   onLoad: function(options) {
     console.log('options：', options)
@@ -67,6 +68,7 @@ Page({
           showCancel: false
         })
       }
+
       var that = this;
       var myroom = options.myroom;
       var yourroom = options.yourroom;
@@ -191,7 +193,7 @@ Page({
     }, 2000)
     return {
       title: that.data.userInfo.nickName + '邀请你加入游戏',
-      path: '../TicTacToeIndex/TicTacToeIndex?myroom=' + room2 + '&yourroom=' + room1 + '&invited=' + '1',
+      path: '/program/pages/index/TicTacToeIndex/TicTacToeIndex?myroom=' + room2 + '&yourroom=' + room1 + '&invited=' + '1',
       success: (res) => {
         console.log('successfully shared');
       }
