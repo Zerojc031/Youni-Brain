@@ -28,7 +28,7 @@ Page({
     h: 0,
     t: 0, //计时
     score: 0, //分数
-    bestScore: 0,
+    bestScore: 0,//最好分数
     fh: null, //施力区域的高度，玄学，勿改
     index: null, //操作小球的编号
     w: [], //操作小球的角速度
@@ -52,7 +52,7 @@ Page({
       this.data.openid = app.globalData.openid
       if (this.data.bool == 0 && this.data.openid) {
         if (options.bestScore > 0) {
-          this.data.bestScore = options.bestScore
+          this.data.bestScore = Number(options.bestScore)
           this.data.id = options.id
           this.data.times=options.times
           this.data.bool = 1
@@ -268,10 +268,10 @@ Page({
   time: function () {
     this.data.t++;
     var tempScore = Math.floor((this.data.t) / 100);
-    this.setData({
+    if(this.data.score!=tempScore)this.setData({
       score: tempScore,
     })
-    if (this.data.t == 3000 && this.data.t == 6000 && this.data.t == 9000) this.data.w[this.data.index] += 0.1;
+    if (this.data.t == 3000 && this.data.t == 6000 && this.data.t == 9000) this.data.w[this.data.index] += 0.1;//阶梯式增速
   },
   tap: function (e) {
     console.log(e);
