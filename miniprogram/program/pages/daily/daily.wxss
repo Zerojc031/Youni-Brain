@@ -1,0 +1,24 @@
+/* program/pages/Daily/Daily.wxss */
+
+.daily-container{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+}
+
+.text-container{
+  width: 600rpx;
+  margin-top: 30rpx;
+}
+
+.button-upload{
+  margin-top: 30rpx;
+  font-size: 38rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  border-radius: 18rpx;
+}

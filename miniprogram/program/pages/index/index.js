@@ -12,18 +12,19 @@ Page({
   //事件处理函数
   onLoad: function() {
 
-    //获取openid
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-      }
-    })
+    if (!app.globalData.openid) {
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          console.log('[云函数] [login] user openid: ', res.result.openid)
+          app.globalData.openid = res.result.openid
+        },
+        fail: err => {
+          console.error('[云函数] [login] 调用失败', err)
+        }
+      })
+    }
 
     if (app.globalData.userInfo) {
       this.setData({
@@ -52,6 +53,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function(e) {
     console.log(e)
     if (e.detail.userInfo) {
@@ -69,9 +71,9 @@ Page({
     }
   },
   toPrimeNum: function() {
-      wx.navigateTo({
-        url: 'PrimeNum/PrimeNum',
-      })
+    wx.navigateTo({
+      url: 'PrimeNum/PrimeNum',
+    })
   },
   toTicTacToe: function() {
     wx.navigateTo({
@@ -86,6 +88,11 @@ Page({
   like: function() {
     if (this.data.like != 1) this.setData({
       like: 1
+    })
+  },
+  toDaily: function() {
+    wx.navigateTo({
+      url: '../daily/daily',
     })
   }
 })

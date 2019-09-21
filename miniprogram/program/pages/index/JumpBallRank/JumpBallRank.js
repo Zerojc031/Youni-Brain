@@ -89,10 +89,6 @@ Page({
 
   },
 
-  bindViewTap: function () {
-  
-  },
-
   previous: function () {
     if (this.data.page > 1) {
       this.setData({
