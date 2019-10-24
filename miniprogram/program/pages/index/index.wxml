@@ -7,40 +7,36 @@
     </button>
   </block>
   <block wx:else>
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" bindtap="toDaily" mode="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </block>
 </view>
 
-
-<swiper indicator-dots="true" indicator-color="rgba(0,0,0,0.5)" indicator-active-color="#000000" autoplay="true" current="0" interval="5000" duration="300" circular="true" display-multiple-items="1" easing-function="default" class='swiper-index'>
-  <!-- skip-hidden-item-layout="true" 是否跳过未显示的滑块布局，设为 true 可优化复杂情况下的滑动性能，但会丢失隐藏状态滑块的布局信息 -->
-  <!-- easing-function="easeInCubic" 指定 swiper 切换缓动动画类型 -->
-  <!-- vertical="false" -->
-  <block>
-    <swiper-item>
-      <image src="../../images/JumpBall.jpg" class='image-item' />
-      <button bindtap='toJumpBall' class='button-toGameIndex'>跳跃球</button>
-    </swiper-item>
-    <swiper-item>
-      <image src="../../images/TicTacToe.png" class='image-item' />
-      <button bindtap='toTicTacToe' class='button-toGameIndex'>高阶井字棋</button>
-    </swiper-item>
-    <swiper-item>
-      <image src="../../images/PrimeNumber.png" class='image-item' />
-      <button bindtap='toPrimeNum' class='button-toGameIndex'>判断质数</button>
-    </swiper-item>
-    <swiper-item>
-      <view class='text-intro'>
-        <view>小程序:油腻大脑</view>
-        <view>版本：2.2.0</view>
-        <view>特性：1.未授权信息也能使用小程序；2.优化了页面加载速度</view>
-        <view>微信公众号：功夫茶熊猫</view>
-        <text>\n</text>
-        <view>⭐测试组招募：点击右上角“关于油腻大脑”，进入公众号"功夫茶熊猫"，联系我们</view>
-      </view>
-      <button wx:if="{{like==0}}" bindtap='like' class='button-like'>喜欢💛</button>
-      <button wx:if="{{like==1}}" bindtap='like' class='button-like'>喜欢🧡</button>
-    </swiper-item>
-  </block>
-</swiper>
+  <swiper indicator-dots="true" indicator-color="#D9D9D9" indicator-active-color="#737373" autoplay="true" current="0" interval="5000" duration="200" circular="true" display-multiple-items="1" easing-function="default" class='swiper-index'>
+    <block>
+      <swiper-item>
+        <image src="../../images/JumpBall.jpg" class='image-item' />
+        <button bindtap='toJumpBall' class='button-toGameIndex'>跳跃球</button>
+      </swiper-item>
+      <swiper-item>
+        <image src="../../images/TicTacToe.png" class='image-item' />
+        <button bindtap='toTicTacToe' class='button-toGameIndex'>高阶井字棋</button>
+      </swiper-item>
+      <swiper-item>
+        <image src="../../images/PrimeNumber.png" class='image-item' />
+        <button bindtap='toPrimeNum' class='button-toGameIndex'>判断质数</button>
+      </swiper-item>
+      <swiper-item>
+        <view class='text-intro'>
+          <view>小程序:油腻大脑</view>
+          <view>版本：2.2.0</view>
+          <view>特性：1.未授权信息也能使用小程序；2.优化了页面加载速度</view>
+          <view>微信公众号：功夫茶熊猫</view>
+          <text>\n</text>
+          <view>⭐测试组招募：点击右上角“关于油腻大脑”，进入公众号"功夫茶熊猫"，联系我们</view>
+        </view>
+        <button wx:if="{{like==0}}" bindtap='like' class='button-like'>喜欢💛</button>
+        <button wx:if="{{like==1}}" bindtap='like' class='button-like'>喜欢🧡</button>
+      </swiper-item>
+    </block>
+  </swiper>

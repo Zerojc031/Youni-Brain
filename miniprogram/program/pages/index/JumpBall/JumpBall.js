@@ -332,7 +332,7 @@ Page({
     else titletext = "跳跳球真难玩，你能得几分呢？";
     return {
       title: titletext,
-      path: '../JumpBallIndex/JumpBallIndex',
+      path: '/program/pages/index/JumpBallIndex/JumpBallIndex',
     }
   },
 })
