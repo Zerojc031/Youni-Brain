@@ -1,6 +1,3 @@
-//记住，所有变量和函数加上this
-//不能cout
-//int改成var
 export default class HMI {
   constructor() {
     var chess = [];
@@ -12,6 +9,7 @@ export default class HMI {
     this.state = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.score = [1, 2, 4, 16];
   }
+
   check(a, b, turn) {
     this.chess[a][b] = turn;
     if (this.chess[a][0] != 0) {
@@ -35,6 +33,7 @@ export default class HMI {
       }
     }
   }
+
   putchess(a,b) {
     //console.log('putchess0');
     this.check(a, b, 1);
@@ -90,6 +89,7 @@ export default class HMI {
     }
     //这里要return结果，暂时没想好
   }
+
   min(i) {
     //console.log('min0');
     var result=[];
@@ -159,6 +159,7 @@ export default class HMI {
       return temp;
     },50)*/
   }
+
   max(b) {
     //console.log('max0');
     var highest = -10000;
@@ -195,6 +196,7 @@ export default class HMI {
     //console.log('max1');
     return highest;
   }
+
   estimate() {
     //console.log('estimate0');
     var value1=[];
@@ -241,6 +243,7 @@ export default class HMI {
         value0[8] * value0[2] * value0[5] +
         value0[8] * value0[6] * value0[7]);
   }
+
   three(a, b, c) {
     if (a + b + c == 0) {
       this.turn1 += this.score[0];
@@ -271,6 +274,7 @@ export default class HMI {
       }
     }
   }
+
   if_gameover(){
     if (this.state[0] != 0) {
       if ((this.state[0] == this.state[1] && this.state[0] == this.state[2]) ||
@@ -294,4 +298,5 @@ export default class HMI {
     }
     return false;
   }
+  
 }

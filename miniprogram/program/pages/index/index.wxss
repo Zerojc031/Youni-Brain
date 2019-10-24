@@ -59,3 +59,9 @@
   width: 750rpx;
   height: 700rpx;
 }
+
+.view-pre{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

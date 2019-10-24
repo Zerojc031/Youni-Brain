@@ -94,5 +94,5 @@ Page({
     wx.navigateTo({
       url: '../daily/daily',
     })
-  }
+  },
 })

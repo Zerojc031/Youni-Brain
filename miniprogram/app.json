@@ -1,7 +1,5 @@
 {
   "pages": [
-    "program/pages/daily/daily",
-    "program/pages/daily/upload/upload",
     "program/pages/index/index",
     "program/pages/index/PrimeNumRank/PrimeNumRank",
     "program/pages/index/PrimeNum/PrimeNum",
