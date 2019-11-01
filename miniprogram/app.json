@@ -9,7 +9,8 @@
     "program/pages/index/TicTacToeRank/TicTacToeRank",
     "program/pages/index/JumpBallIndex/JumpBallIndex",
     "program/pages/index/JumpBall/JumpBall",
-    "program/pages/index/JumpBallRank/JumpBallRank"
+    "program/pages/index/JumpBallRank/JumpBallRank",
+    "program/pages/index/MapDIY/MapDIY"
   ],
   "window": {
     "backgroundTextStyle": "light",

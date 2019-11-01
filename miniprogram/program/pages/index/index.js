@@ -95,4 +95,9 @@ Page({
       url: '../daily/daily',
     })
   },
+  toMapDIY:function(){
+    wx.navigateTo({
+      url: 'MapDIY/MapDIY',
+    })
+  }
 })
