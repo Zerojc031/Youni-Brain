@@ -2,7 +2,7 @@
   <canvas canvas-id="map" class="canvas" />
 </view>
 <view>
-  <input placeholder="输入数据量最大值,范围1-5000,默认50" placeholder-class="placeholderText" type="number" confirm-type="done" bindblur="changeRange" class="input-head"></input>
+  <input placeholder="输入数据量最大值,需为正数,默认50" placeholder-class="placeholderText" type="number" confirm-type="done" bindblur="changeRange" class="input-head"></input>
 
   <view wx:for="{{array}}" wx:key="id">
     <slider id="{{index}}" min="0" max="{{range}}" step="1" value="{{item.value}}" block-size="22" block-color="{{item.color}}" activeColor="{{item.color}}" show-value="true" bindchange="bindDataChange" />

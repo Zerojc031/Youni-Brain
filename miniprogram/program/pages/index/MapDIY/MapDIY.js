@@ -168,6 +168,10 @@ Page({
         wx.previewImage({
           urls: [res.tempFilePath],
           success(res) {
+            wx.showToast({
+              title: '长按保存',
+              duration: 600
+            })
             console.log('显示成功', res)
           },
           complete(res) {
