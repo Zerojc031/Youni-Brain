@@ -2,12 +2,46 @@
   <canvas canvas-id="map" class="canvas" />
 </view>
 <view>
-  <input placeholder="输入数据量最大值,需为正数,默认50" placeholder-class="placeholderText" type="number" confirm-type="done" bindblur="changeRange" class="input-head"></input>
-
-  <view wx:for="{{array}}" wx:key="id">
-    <slider id="{{index}}" min="0" max="{{range}}" step="1" value="{{item.value}}" block-size="22" block-color="{{item.color}}" activeColor="{{item.color}}" show-value="true" bindchange="bindDataChange" />
+  <view class="view-switch">
+    <button class="button-switch {{presentPage==0?'button-hover':''}}" hover-class="none" palin bindtap="toItems">Items</button>
+    <button class="button-switch {{presentPage==1?'button-hover':''}}" hover-class="none" palin bindtap="toData">Data</button>
+    <button class="button-switch {{presentPage==2?'button-hover':''}}" hover-class="none" palin bindtap="toSwitch">Switch</button>
+    <button class="button-switch {{presentPage==3?'button-hover':''}}" hover-class="none" palin bindtap="toHelp">Help</button>
   </view>
-
+  <swiper class="swiper-mapDIY" current="{{presentPage}}">
+    <swiper-item catchtouchmove="none">
+      <view class="view-items">
+        <button class="button-items" bindtap="toPaint1">环状图</button>
+        <button class="button-items" bindtap="toPaint2">扇形图</button>
+      </view>
+    </swiper-item>
+    <swiper-item catchtouchmove="none">
+      <input placeholder="输入数据量最大值,需为正数,默认50" placeholder-class="placeholderText" type="number" confirm-type="done" bindblur="changeRange" class="input-head"></input>
+      <view wx:for="{{array}}" wx:key="id">
+        <slider id="{{index}}" min="0" max="{{range}}" step="1" value="{{item.value}}" block-size="22" block-color="{{item.color}}" activeColor="{{item.color}}" show-value="true" bindchange="bindDataChange" />
+      </view>
+    </swiper-item>
+    <swiper-item catchtouchmove="none">
+      <view>
+        <text>数值 </text>
+        <switch bindchange="switchValueChange" checked="{{switchStatus==1?'true':''}}"></switch>
+      </view>
+      <view>
+        <text>百分比 </text>
+        <switch bindchange="switchPercentageChange" checked="{{switchStatus==2?'true':''}}"></switch>
+      </view>
+    </swiper-item>
+    <swiper-item catchtouchmove="none">
+      <view>
+        <view>Q:这是什么功能?</view>
+        <view>A:掌上生成简易统计图，没电脑也能作图</view>
+        <view>Q:我希望在图上加标题和数据项名称!</view>
+        <view>A:模块暂未开发，暂可使用微信图片编辑替代</view>
+        <view>Q:还有其他种类的统计图吗?</view>
+        <view>A:衷心听取每一位用户的需求，您可以点击右上角三个点的按钮-意见反馈与举报-功能异常-意见与建议 来提出需求</view>
+      </view>
+    </swiper-item>
+  </swiper>
   <view>
     <button class="button-tran" bindtap="toImage">一键生成</button>
   </view>
