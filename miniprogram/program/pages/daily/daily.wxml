@@ -5,5 +5,5 @@
   <view wx:if="{{textStatus}}" class="text-container">
     <text>今天是{{dailyDate}}。{{dailyText}}</text>
   </view>
-  <button class="button-upload" bindtap="toUpload">上传图片</button>
+  <!-- <button class="button-upload" bindtap="toUpload">上传图片</button> -->
 </view>
