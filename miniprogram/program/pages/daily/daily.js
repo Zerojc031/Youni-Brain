@@ -23,7 +23,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.loadText()
     // this.getPicture()
   },
@@ -31,47 +31,47 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
-  
+
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
-  toIndex: function() {
-    wx.redirectTo({
-      url: '../index/index',
+  toIndex: function () {
+    wx.navigateBack({
+      delta: 1
     })
   },
 
-  loadText: function() {
+  loadText: function () {
     var that = this
     var text, hourText, myDate = new Date()
     var date = myDate.getMonth() + 1 + '月' + myDate.getDate() + '日'
@@ -86,12 +86,12 @@ Page({
     else if (hour >= 22 && hour <= 24 || hour >= 0 && hour <= 3) hourText = '晚安'
 
     db.collection('control').doc('daily').get({
-      success: function(res) {
+      success: function (res) {
         console.log('success:', res)
         text = res.data.text[myDate.getDate()]
       },
-      fail: function(res) {},
-      complete: function(res) {
+      fail: function (res) { },
+      complete: function (res) {
         if (!text) text = '如果栽了跟头就倒地不起，碰了钉子就逃之夭夭，立下再多志愿也只是白费时间。让努力成为习惯，把挫折看作鞭策。再硬着头皮闯一次，再咬紧牙关拼一回，不知不觉，你就会变得更加强大。'
         var dataText = text + hourText + '！'
         that.setData({
@@ -103,7 +103,7 @@ Page({
     })
   },
 
-  toUpload: function() {
+  toUpload: function () {
     wx.navigateTo({
       url: 'upload/upload',
     })
