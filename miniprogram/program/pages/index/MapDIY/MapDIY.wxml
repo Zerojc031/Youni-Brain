@@ -2,7 +2,7 @@
   <canvas canvas-id="map" class="canvas" />
 </view>
 <view>
-  <view class="view-switch">
+  <view class="view-tab">
     <button class="button-switch {{presentPage==0?'button-hover':''}}" hover-class="none" palin bindtap="toItems">Items</button>
     <button class="button-switch {{presentPage==1?'button-hover':''}}" hover-class="none" palin bindtap="toData">Data</button>
     <button class="button-switch {{presentPage==2?'button-hover':''}}" hover-class="none" palin bindtap="toSwitch">Switch</button>
@@ -22,13 +22,15 @@
       </view>
     </swiper-item>
     <swiper-item catchtouchmove="none">
-      <view>
-        <text>数值 </text>
-        <switch bindchange="switchValueChange" checked="{{switchStatus==1?'true':''}}"></switch>
-      </view>
-      <view>
-        <text>百分比 </text>
-        <switch bindchange="switchPercentageChange" checked="{{switchStatus==2?'true':''}}"></switch>
+      <view class="view-swtich">
+        <view>
+          <text>数值 </text>
+          <switch bindchange="switchValueChange" checked="{{switchStatus==1?'true':''}}"></switch>
+        </view>
+        <view>
+          <text>百分比 </text>
+          <switch bindchange="switchPercentageChange" checked="{{switchStatus==2?'true':''}}"></switch>
+        </view>
       </view>
     </swiper-item>
     <swiper-item catchtouchmove="none">

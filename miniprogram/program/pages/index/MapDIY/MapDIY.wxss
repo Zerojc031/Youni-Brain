@@ -36,7 +36,7 @@
   border: none;
 }
 
-.view-switch{
+.view-tab{
   display: flex;
 }
 
@@ -51,4 +51,8 @@
 .button-items{
   width: 30%;
   height: 90rpx;
+}
+
+.view-switch{
+  display: 
 }

@@ -21,9 +21,9 @@ Page({
     speak: false,
     saying: '',
     myword: '',
-    yourword: ''
+    yourword: '',
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     let my_room = options.myroom;
     let your_room = options.yourroom;
     let my_turn = options.myturn;
@@ -96,10 +96,10 @@ Page({
     }, 5000)*/
   },
 
-  onShow: function() {
+  onShow: function () {
     if (this.data.onshow == false) {
       var that = this;
-      temp = setInterval(function() {
+      temp = setInterval(function () {
         if (that.data.turn == that.data.myturn) {
           clearInterval(temp)
           console.log(that.data.turn + '' + that.data.myturn)
@@ -114,26 +114,27 @@ Page({
       })
     }
   },
-  onHide: function() {
+  onHide: function () {
     console.log('hhhhhhhhhhhhhhhhhhhhhhhh')
     this.setData({
       onshow: false
     })
     clearInterval(temp)
   },
-  access: function() {
-    console.log('access')
+  access: function () {
+    
     db.collection('tic_tac_toe_room').doc(this.data.yourroom).get({
       success: res => {
         this.setData({
           room_info: res.data
         })
+        console.log('access')
       }
     })
   },
-  update: function() {
+  update: function () {
     console.log('update')
-    if (this.data.yourword != this.data.room_info.saying && this.data.room_info.saying) {
+    if (this.data.room_info.saying && this.data.yourword != this.data.room_info.saying) {
       this.setData({
         yourword: this.data.room_info.saying,
         myword: ''
@@ -165,7 +166,7 @@ Page({
         })
       }
       clearInterval(temp)
-      setTimeout(function() {
+      setTimeout(function () {
         wx.redirectTo({
           url: '../TicTacToeIndex/TicTacToeIndex'
         })
@@ -198,14 +199,14 @@ Page({
         })
       }
       var that = this
-      setTimeout(function() {
+      setTimeout(function () {
         that.setData({
           tip2: ((that.data.state[yourstep[1]] != 0) ? ('💡 对手下了' + (yourstep[0] + 1) + '-' + (yourstep[1] + 1) + '但' + (yourstep[1] + 1) + '号井已被占领，因此你可在任意位置落子') : ('💡 对手下了' + (yourstep[0] + 1) + '-' + (yourstep[1] + 1) + ',因此你只能在' + (yourstep[1] + 1) + '小井内的空格下棋'))
         })
       }, 500)
     }
   },
-  onChessBoardTouchStart: function(e) {
+  onChessBoardTouchStart: function (e) {
     if (this.data.myturn == 2 && this.data.room_info.gameon == false) {
       var curTarget = e.currentTarget;
       var offset = {
@@ -270,7 +271,7 @@ Page({
 
     }
   },
-  begin: function() {
+  begin: function () {
     if (this.data.room_info.if_ready == true) {
       db.collection('tic_tac_toe_room').doc(this.data.myroom).update({
         data: {
@@ -284,7 +285,7 @@ Page({
       })
     }
   },
-  finish: function() {
+  finish: function () {
     if (this.data.turn == this.data.myturn) {
       var newupdate = this.data.myupdate + 1;
       db.collection('tic_tac_toe_room').doc(this.data.myroom).update({
@@ -310,14 +311,14 @@ Page({
       })
       this.check(this.data.mystep.x)
       var that = this;
-      setTimeout(function() {
+      setTimeout(function () {
         that.setData({
           tip2: ((that.data.state[that.data.mystep.y] != 0) ? ('💡 你下了' + (that.data.mystep.x + 1) + '-' + (that.data.mystep.y + 1) + '但' + (that.data.mystep.y + 1) + '号井已被占领，因此对方可在任意位置落子') : ('💡 你下了' + (that.data.mystep.x + 1) + '-' + (that.data.mystep.y + 1) + ',因此对方只能在' + (that.data.mystep.y + 1) + '小井内的空格下棋'))
         })
       }, 500)
       //监控
-      setTimeout(function() {
-        temp = setInterval(function() {
+      setTimeout(function () {
+        temp = setInterval(function () {
           if (that.data.turn == that.data.myturn) {
             console.log('clearInterval')
             clearInterval(temp)
@@ -328,7 +329,7 @@ Page({
       }, 5000)
     }
   },
-  check: function(i) {
+  check: function (i) {
     //直线
     for (var j = 0; j < 3; j++) {
       if (this.data.chessBoard[i][j * 3].type == this.data.chessBoard[i][j * 3 + 1].type && this.data.chessBoard[i][j * 3].type == this.data.chessBoard[i][j * 3 + 2].type && this.data.chessBoard[i][j * 3].type != 0) {
@@ -354,7 +355,7 @@ Page({
     var that = this;
     setTimeout(that.check_all, 500)
   },
-  check_all: function() {
+  check_all: function () {
     if (this.data.state[0] != 0) {
       if ((this.data.state[0] == this.data.state[1] && this.data.state[0] == this.data.state[2]) ||
         (this.data.state[0] == this.data.state[3] && this.data.state[0] == this.data.state[6]) ||
@@ -376,7 +377,7 @@ Page({
       }
     }
   },
-  gameover: function(winner) {
+  gameover: function (winner) {
     if (this.data.gameon == 1) {
       if (this.data.myturn == 1) {
         db.collection('tic_tac_toe_record').doc(this.data.myroom).update({
@@ -402,7 +403,7 @@ Page({
         success: console.log,
         fail: console.error
       })
-      setTimeout(function() {
+      setTimeout(function () {
         wx.redirectTo({
           url: '../TicTacToeIndex/TicTacToeIndex'
         })
@@ -410,7 +411,7 @@ Page({
     }
 
   },
-  back_to_index: function() {
+  back_to_index: function () {
     var that = this;
     wx.showModal({
       title: '正在游戏中',
@@ -440,17 +441,17 @@ Page({
       }
     })
   },
-  speak: function() {
+  speak: function () {
     this.setData({
       speak: true
     })
   },
-  bindKeyInput: function(e) {
+  bindKeyInput: function (e) {
     this.setData({
       saying: e.detail.value
     })
   },
-  send: function() {
+  send: function () {
     this.setData({
       speak: false,
       myword: '📢 ' + this.data.myname + ': ' + this.data.saying
