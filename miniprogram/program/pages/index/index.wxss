@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50rpx 0;
+  padding: 35rpx 0;
 }
 
 .userinfo-avatar {
@@ -16,7 +16,7 @@
 
 .userinfo-nickname {
   color: #aaa;
-  font-size: 50rpx;
+  font-size: 40rpx;
 }
 
 .button-getUserInfo{

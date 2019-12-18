@@ -12,7 +12,7 @@
   </block>
 </view>
 
-<swiper indicator-dots="true" indicator-color="#D9D9D9" indicator-active-color="#737373" autoplay="true" current="0" interval="5000" duration="200" circular="true" display-multiple-items="1" easing-function="default" class='swiper-index'>
+<swiper indicator-dots="true" indicator-color="#D9D9D9" indicator-active-color="#080808" autoplay="true" current="0" interval="2500" duration="500" circular="true" display-multiple-items="1" easing-function="default" class='swiper-index'>
   <block>
     <swiper-item>
       <image src="../../images/DIYMap.png" class='image-item' />
